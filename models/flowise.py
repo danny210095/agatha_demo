@@ -6,7 +6,7 @@ class FlowiseAgent:
     async def send_to_agent(self, topic, user_input, conversation_history):
         endpoint = BOT_CONFIG[topic]["endpoint"]
         if not endpoint:
-            return "当前主题暂不支持。"
+            return "當前主題暫不支持。"
 
         async with aiohttp.ClientSession() as session:
             payload = {
@@ -17,8 +17,8 @@ class FlowiseAgent:
                 async with session.post(endpoint, json=payload) as response:
                     if response.status == 200:
                         data = await response.json()
-                        return data.get("text", "无响应")
+                        return data.get("text", "無回應")
             except Exception as e:
-                logging.error(f"Flowise 请求失败: {e}")
+                logging.error(f"Flowise 請求失敗: {e}")
                 return None
 

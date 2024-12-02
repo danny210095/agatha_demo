@@ -5,7 +5,7 @@ from config import MONGODB_URI
 class MongoDB:
     def __init__(self):
         self.client = MongoClient(MONGODB_URI)
-        self.db = self.client['Agatha']
+        self.db = self.client['Agatha-UAT']
 
     def get_collection(self, collection_name):
         return self.db[collection_name]
